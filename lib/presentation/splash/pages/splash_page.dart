@@ -6,7 +6,7 @@ import 'package:istanbulguidetwo/presentation/splash/bloc/splash_cubit.dart';
 import 'package:istanbulguidetwo/presentation/splash/bloc/splash_state.dart';
 
 import '../../../core/config/theme/app_colors.dart';
-import '../../../core/config/utils/app_route_animation.dart';
+import '../../../core/utils/app_route_animation.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});

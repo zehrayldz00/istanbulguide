@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:istanbulguidetwo/common/helper/navigator/app_navigator.dart';
-import 'package:istanbulguidetwo/common/widget/button/app_button.dart';
-import 'package:istanbulguidetwo/core/config/utils/size_config.dart';
+import 'package:istanbulguidetwo/common/widget/button/basic_reactive_button.dart';
+import 'package:istanbulguidetwo/core/utils/size_config.dart';
 import 'package:istanbulguidetwo/presentation/home/pages/home_page.dart';
 
 import '../../../core/config/assets/app_images.dart';
@@ -78,7 +78,7 @@ class ForgotPasswordPage extends StatelessWidget {
   }
 
   Widget _resetPasswordButton(BuildContext context) {
-    return BasicAppButton(
+    return BasicReactiveButton(
       onPressed: () {
         AppNavigator.pushReplacement(context, const HomePage());
       },

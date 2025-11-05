@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:istanbulguidetwo/core/config/theme/app_theme.dart';
-import 'package:istanbulguidetwo/core/config/utils/size_config.dart';
+import 'package:istanbulguidetwo/core/utils/size_config.dart';
 import 'package:istanbulguidetwo/firebase_options.dart';
 import 'package:istanbulguidetwo/presentation/splash/bloc/splash_cubit.dart';
 import 'package:istanbulguidetwo/presentation/splash/pages/splash_page.dart';
+import 'package:istanbulguidetwo/service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,6 +16,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform
   );
+
+  await initializeDependencies();
 
   // only vertical using
   await SystemChrome.setPreferredOrientations([

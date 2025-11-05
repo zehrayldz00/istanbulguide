@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:istanbulguidetwo/core/config/theme/app_colors.dart';
-import 'package:istanbulguidetwo/core/config/utils/size_config.dart';
+
+import '../../utils/size_config.dart';
 
 class AppTheme {
   static final appTheme = ThemeData(

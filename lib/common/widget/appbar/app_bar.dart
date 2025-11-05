@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:istanbulguidetwo/core/config/utils/size_config.dart';
+import 'package:istanbulguidetwo/core/utils/size_config.dart';
 
 import '../../../core/config/theme/app_colors.dart';
 
