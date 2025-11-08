@@ -5,4 +5,5 @@ import 'package:istanbulguidetwo/data/auth/models/user_login_req.dart';
 abstract class AuthRepository{
   Future<Either> register(UserCreationReq user);
   Future<Either> login(UserLoginReq user);
+  Future<Either> resetPassword(String email);
 }

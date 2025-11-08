@@ -35,7 +35,8 @@ class LoginPage extends StatelessWidget {
               );
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
-            if (state is ButtonSuccessState) {}
+            if (state is ButtonSuccessState) {
+            }
           },
           child: Stack(
             children: [
@@ -128,7 +129,7 @@ class LoginPage extends StatelessWidget {
   Widget _forgotPasswordText(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        AppNavigator.push(context, const ForgotPasswordPage());
+        AppNavigator.push(context, ForgotPasswordPage());
       },
       child: Text(
         'Forgot password?',
@@ -148,8 +149,8 @@ class LoginPage extends StatelessWidget {
         return BasicReactiveButton(
           onPressed: () {
             final userLoginReq = UserLoginReq(
-                email : _emailCon.text,
-                password : _passwordCon.text
+              email: _emailCon.text,
+              password: _passwordCon.text,
             );
 
             context.read<ButtonStateCubit>().execute(

@@ -13,16 +13,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // firebase initializing
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   await initializeDependencies();
 
   // only vertical using
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown
+    DeviceOrientation.portraitDown,
   ]);
 
   runApp(const MyApp());
@@ -38,9 +36,10 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => SplashCubit()..appStarted(),
       child: MaterialApp(
-          theme: AppTheme.appTheme,
-          debugShowCheckedModeBanner: false,
-          home: SplashPage()),
+        theme: AppTheme.appTheme,
+        debugShowCheckedModeBanner: false,
+        home: SplashPage(),
+      ),
     );
   }
 }
