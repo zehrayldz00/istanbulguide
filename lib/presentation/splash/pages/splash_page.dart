@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:istanbulguidetwo/common/helper/navigator/app_navigator.dart';
 import 'package:istanbulguidetwo/core/config/assets/app_images.dart';
 import 'package:istanbulguidetwo/presentation/auth/pages/login_page.dart';
+import 'package:istanbulguidetwo/presentation/home/pages/home_page.dart';
 import 'package:istanbulguidetwo/presentation/splash/bloc/splash_cubit.dart';
 import 'package:istanbulguidetwo/presentation/splash/bloc/splash_state.dart';
 
 import '../../../core/config/theme/app_colors.dart';
-import '../../../core/utils/app_route_animation.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -45,10 +46,11 @@ class _SplashPageState extends State<SplashPage>
     return BlocListener<SplashCubit, SplashState>(
       listener: (context, state) {
         if (state is UnAuthenticated) {
-          Navigator.pushReplacement(
-            context,
-            CustomPageRoute.slideTransition(LoginPage()),
-          );
+          AppNavigator.pushReplacement(context, LoginPage());
+        } else if (state is Authenticated) {
+          AppNavigator.pushReplacement(context, HomePage());
+        } else{
+
         }
       },
       child: Scaffold(

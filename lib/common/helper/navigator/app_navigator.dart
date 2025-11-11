@@ -9,9 +9,14 @@ class AppNavigator {
   }
 
   static void push(BuildContext context, Widget widget) {
-    Navigator.push(
+    Navigator.push(context, MaterialPageRoute(builder: (context) => widget));
+  }
+
+  static void pushAndRemove(BuildContext context, Widget widget) {
+    Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(builder: (context) => widget),
+      (Route<dynamic> route) => false,
     );
   }
 }

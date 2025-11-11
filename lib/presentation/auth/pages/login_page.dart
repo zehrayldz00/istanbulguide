@@ -14,6 +14,7 @@ import 'package:istanbulguidetwo/presentation/auth/pages/register_page.dart';
 
 import '../../../common/bloc/button/button_state.dart';
 import '../../../core/config/theme/app_colors.dart';
+import '../../home/pages/home_page.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -36,6 +37,7 @@ class LoginPage extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
             if (state is ButtonSuccessState) {
+              AppNavigator.pushAndRemove(context, HomePage());
             }
           },
           child: Stack(

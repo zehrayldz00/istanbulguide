@@ -10,6 +10,7 @@ abstract class AuthFirebaseService {
   Future<Either> register(UserCreationReq user);
   Future<Either> login(UserLoginReq user);
   Future<Either> resetPassword(String email);
+  Future<bool> isLoggedIn();
 }
 
 class AuthFirebaseServiceImpl extends AuthFirebaseService {
@@ -67,6 +68,15 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
       return Right('Password reset email sent. Please check your inbox.');
     } catch (e) {
       return const Left('Please try again');
+    }
+  }
+
+  @override
+  Future<bool> isLoggedIn() async{
+    if(FirebaseAuth.instance.currentUser != null){
+      return true;
+    } else{
+      return false;
     }
   }
 }

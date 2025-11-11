@@ -37,7 +37,6 @@ class ResetEmailSentPage extends StatelessWidget {
                     children: [
                       SizedBox(height: SizeConfig.heightMultiplier(10)),
                       _resetEmailSentText(context),
-
                     ],
                   ),
                 ),
@@ -49,7 +48,7 @@ class ResetEmailSentPage extends StatelessWidget {
     );
   }
 
-  Widget _resetEmailSentText(BuildContext context){
+  Widget _resetEmailSentText(BuildContext context) {
     return Text(
       'Reset email sent. Please check your inbox.',
       style: TextStyle(
@@ -58,5 +57,5 @@ class ResetEmailSentPage extends StatelessWidget {
         fontWeight: FontWeight.w400,
       ),
     );
-}
+  }
 }
