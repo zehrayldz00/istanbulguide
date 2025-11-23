@@ -46,7 +46,7 @@ class AppTheme {
         textStyle: TextStyle(
           fontSize: SizeConfig.textMultiplier(5),
           fontWeight: FontWeight.w400,
-          fontFamily: 'Macondo',
+          fontFamily: 'CircularStd',
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
         side: BorderSide(color: AppColors.buttonBorder, width: 1),

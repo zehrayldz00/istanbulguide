@@ -11,6 +11,7 @@ abstract class AuthFirebaseService {
   Future<Either> login(UserLoginReq user);
   Future<Either> resetPassword(String email);
   Future<bool> isLoggedIn();
+  Future<Either> getUser();
 }
 
 class AuthFirebaseServiceImpl extends AuthFirebaseService {
@@ -29,6 +30,7 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
             'firstName': user.firstName,
             'lastName': user.lastName,
             'email': user.email,
+            'userId': returnedData.user!.uid,
           });
       return const Right('Register was successfull');
     } on FirebaseAuthException catch (e) {
@@ -72,11 +74,25 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
   }
 
   @override
-  Future<bool> isLoggedIn() async{
-    if(FirebaseAuth.instance.currentUser != null){
+  Future<bool> isLoggedIn() async {
+    if (FirebaseAuth.instance.currentUser != null) {
       return true;
-    } else{
+    } else {
       return false;
+    }
+  }
+
+  @override
+  Future<Either> getUser() async {
+    try {
+      var currentUser = FirebaseAuth.instance.currentUser;
+      var userData = await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(currentUser?.uid)
+          .get().then((value) => value.data());
+      return Right(userData);
+    } catch (e) {
+      return const Left('Something went wrong.');
     }
   }
 }

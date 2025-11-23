@@ -62,7 +62,7 @@ class ForgotPasswordPage extends StatelessWidget {
                           _resetPasswordText(context),
                           SizedBox(height: SizeConfig.heightMultiplier(5)),
                           _emailTextField(context),
-                          SizedBox(height: SizeConfig.heightMultiplier(7)),
+                          SizedBox(height: SizeConfig.heightMultiplier(5)),
                           _resetPasswordButton(context),
                         ],
                       ),
@@ -81,7 +81,7 @@ class ForgotPasswordPage extends StatelessWidget {
     return Text(
       'Reset Password',
       style: TextStyle(
-        fontSize: SizeConfig.textMultiplier(10),
+        fontSize: SizeConfig.textMultiplier(8),
         color: AppColors.textColor,
         fontWeight: FontWeight.w400,
       ),
@@ -90,8 +90,8 @@ class ForgotPasswordPage extends StatelessWidget {
 
   Widget _emailTextField(BuildContext context) {
     return SizedBox(
-      width: SizeConfig.widthMultiplier(80),
-      height: SizeConfig.heightMultiplier(6),
+      width: SizeConfig.widthMultiplier(64),
+      height: SizeConfig.heightMultiplier(4.8),
       child: TextField(
         controller: _emailCon,
         decoration: InputDecoration(hintText: 'Email'),

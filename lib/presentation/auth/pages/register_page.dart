@@ -8,9 +8,11 @@ import 'package:istanbulguidetwo/core/utils/size_config.dart';
 import 'package:istanbulguidetwo/data/auth/models/user_creation_req.dart';
 
 import '../../../common/bloc/button/button_state.dart';
+import '../../../common/helper/navigator/app_navigator.dart';
 import '../../../core/config/assets/app_images.dart';
 import '../../../core/config/theme/app_colors.dart';
 import '../../../domain/auth/usecase/register_usecase.dart';
+import 'login_page.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
@@ -72,7 +74,7 @@ class RegisterPage extends StatelessWidget {
                           SizedBox(height: SizeConfig.heightMultiplier(2)),
                           _registerButton(context),
                           SizedBox(height: SizeConfig.heightMultiplier(2)),
-                          _createAccountText(context),
+                          _existAccountText(context),
                         ],
                       ),
                     ),
@@ -90,7 +92,7 @@ class RegisterPage extends StatelessWidget {
     return Text(
       'Register',
       style: TextStyle(
-        fontSize: SizeConfig.textMultiplier(10),
+        fontSize: SizeConfig.textMultiplier(8),
         color: AppColors.textColor,
         fontWeight: FontWeight.w400,
       ),
@@ -99,8 +101,8 @@ class RegisterPage extends StatelessWidget {
 
   Widget _nameTextField(BuildContext context) {
     return SizedBox(
-      width: SizeConfig.widthMultiplier(80),
-      height: SizeConfig.heightMultiplier(6),
+      width: SizeConfig.widthMultiplier(64),
+      height: SizeConfig.heightMultiplier(4.8),
       child: TextField(
         controller: _nameCon,
         decoration: InputDecoration(hintText: 'Name'),
@@ -111,8 +113,8 @@ class RegisterPage extends StatelessWidget {
 
   Widget _lastNameTextField(BuildContext context) {
     return SizedBox(
-      width: SizeConfig.widthMultiplier(80),
-      height: SizeConfig.heightMultiplier(6),
+      width: SizeConfig.widthMultiplier(64),
+      height: SizeConfig.heightMultiplier(4.8),
       child: TextField(
         controller: _lastNameCon,
         decoration: InputDecoration(hintText: 'Last Name'),
@@ -123,8 +125,8 @@ class RegisterPage extends StatelessWidget {
 
   Widget _emailTextField(BuildContext context) {
     return SizedBox(
-      width: SizeConfig.widthMultiplier(80),
-      height: SizeConfig.heightMultiplier(6),
+      width: SizeConfig.widthMultiplier(64),
+      height: SizeConfig.heightMultiplier(4.8),
       child: TextField(
         controller: _emailCon,
         decoration: InputDecoration(hintText: 'Email'),
@@ -135,8 +137,8 @@ class RegisterPage extends StatelessWidget {
 
   Widget _passwordTextField(BuildContext context) {
     return SizedBox(
-      width: SizeConfig.widthMultiplier(80),
-      height: SizeConfig.heightMultiplier(6),
+      width: SizeConfig.widthMultiplier(64),
+      height: SizeConfig.heightMultiplier(4.8),
       child: TextField(
         controller: _passwordCon,
         obscureText: true,
@@ -169,21 +171,22 @@ class RegisterPage extends StatelessWidget {
     );
   }
 
-  Widget _createAccountText(BuildContext context) {
+  Widget _existAccountText(BuildContext context) {
     return RichText(
       text: TextSpan(
         children: [
           TextSpan(
             text: 'Already have an account? ',
-            style: TextStyle(fontSize: SizeConfig.textMultiplier(3.3)),
+            style: TextStyle(fontSize: SizeConfig.textMultiplier(3)),
           ),
           TextSpan(
             text: 'Log in!',
             recognizer: TapGestureRecognizer()
               ..onTap = () {
+              AppNavigator.pushAndRemove(context, LoginPage());
               },
             style: TextStyle(
-              fontSize: SizeConfig.textMultiplier(3.3),
+              fontSize: SizeConfig.textMultiplier(3),
               fontWeight: FontWeight.bold,
             ),
           ),

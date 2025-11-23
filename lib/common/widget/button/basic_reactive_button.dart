@@ -22,38 +22,44 @@ class BasicReactiveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ButtonStateCubit, ButtonState>(
-        builder: (context, state){
-          if(state is ButtonLoadingState){
-            return _loading(context);
-          }
-          return _initial(context);
+      builder: (context, state) {
+        if (state is ButtonLoadingState) {
+          return _loading(context);
         }
+        return _initial(context);
+      },
     );
   }
 
-  Widget _loading(BuildContext context){
+  Widget _loading(BuildContext context) {
     return ElevatedButton(
-        onPressed: null,
-        style: ElevatedButton.styleFrom(
-          minimumSize: Size(width ?? SizeConfig.widthMultiplier(50),height ?? SizeConfig.heightMultiplier(6))
+      onPressed: null,
+      style: ElevatedButton.styleFrom(
+        minimumSize: Size(
+          width ?? SizeConfig.widthMultiplier(40),
+          height ?? SizeConfig.heightMultiplier(4.8),
         ),
-        child: Container(
-          alignment: Alignment.center,
-          child: const CircularProgressIndicator(),
-        )
+      ),
+      child: Container(
+        alignment: Alignment.center,
+        child: const CircularProgressIndicator(),
+      ),
     );
   }
 
-  Widget _initial(BuildContext context){
+  Widget _initial(BuildContext context) {
     return ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          minimumSize: Size(width ?? SizeConfig.widthMultiplier(50), height ?? SizeConfig.heightMultiplier(6))
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        minimumSize: Size(
+          width ?? SizeConfig.widthMultiplier(40),
+          height ?? SizeConfig.heightMultiplier(4.8),
         ),
-        child: Text(title,
-        style: const TextStyle(
-          color: AppColors.buttonTextColor
-        ),)
+      ),
+      child: Text(
+        title,
+        style: const TextStyle(color: AppColors.buttonTextColor),
+      ),
     );
   }
 }

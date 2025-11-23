@@ -66,9 +66,9 @@ class LoginPage extends StatelessWidget {
                         children: [
                           SizedBox(height: SizeConfig.heightMultiplier(10)),
                           _loginText(context),
-                          SizedBox(height: SizeConfig.heightMultiplier(4)),
+                          SizedBox(height: SizeConfig.heightMultiplier(2.8)),
                           _emailTextField(context),
-                          SizedBox(height: SizeConfig.heightMultiplier(2)),
+                          SizedBox(height: SizeConfig.heightMultiplier(2.2)),
                           _passwordTextField(context),
                           SizedBox(height: SizeConfig.heightMultiplier(2)),
                           Align(
@@ -96,7 +96,7 @@ class LoginPage extends StatelessWidget {
     return Text(
       'Log In',
       style: TextStyle(
-        fontSize: SizeConfig.textMultiplier(10),
+        fontSize: SizeConfig.textMultiplier(8),
         color: AppColors.textColor,
         fontWeight: FontWeight.w400,
       ),
@@ -105,8 +105,8 @@ class LoginPage extends StatelessWidget {
 
   Widget _emailTextField(BuildContext context) {
     return SizedBox(
-      width: SizeConfig.widthMultiplier(80),
-      height: SizeConfig.heightMultiplier(6),
+      width: SizeConfig.widthMultiplier(64),
+      height: SizeConfig.heightMultiplier(4.8),
       child: TextField(
         controller: _emailCon,
         decoration: InputDecoration(hintText: 'Email'),
@@ -117,8 +117,8 @@ class LoginPage extends StatelessWidget {
 
   Widget _passwordTextField(BuildContext context) {
     return SizedBox(
-      width: SizeConfig.widthMultiplier(80),
-      height: SizeConfig.heightMultiplier(6),
+      width: SizeConfig.widthMultiplier(64),
+      height: SizeConfig.heightMultiplier(4.8),
       child: TextField(
         obscureText: true,
         controller: _passwordCon,
@@ -136,7 +136,7 @@ class LoginPage extends StatelessWidget {
       child: Text(
         'Forgot password?',
         style: TextStyle(
-          fontSize: SizeConfig.textMultiplier(3.3),
+          fontSize: SizeConfig.textMultiplier(3),
           color: AppColors.textColor,
           fontWeight: FontWeight.bold,
           fontFamily: 'San Francisco',
@@ -172,7 +172,7 @@ class LoginPage extends StatelessWidget {
         children: [
           TextSpan(
             text: 'Don\'t have an account? ',
-            style: TextStyle(fontSize: SizeConfig.textMultiplier(3.3)),
+            style: TextStyle(fontSize: SizeConfig.textMultiplier(3)),
           ),
           TextSpan(
             text: 'Create account!',
@@ -181,7 +181,7 @@ class LoginPage extends StatelessWidget {
                 AppNavigator.push(context, RegisterPage());
               },
             style: TextStyle(
-              fontSize: SizeConfig.textMultiplier(3.3),
+              fontSize: SizeConfig.textMultiplier(3),
               fontWeight: FontWeight.bold,
             ),
           ),
