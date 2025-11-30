@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:istanbulguidetwo/common/helper/images/image_display.dart';
 import 'package:istanbulguidetwo/domain/popular/entity/popular.dart';
 
 import '../../../common/bloc/populars/populars_display_cubit.dart';
 import '../../../common/bloc/populars/populars_display_state.dart';
 import '../../../core/config/theme/app_colors.dart';
-import '../../../core/utils/size_config.dart';
 
 class PopularPlaces extends StatelessWidget {
   const PopularPlaces({super.key});
@@ -24,10 +24,10 @@ class PopularPlaces extends StatelessWidget {
             return Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(left: SizeConfig.widthMultiplier(3)),
+                  padding: EdgeInsets.only(left: 11.25.w),
                   child: Align(alignment: Alignment.centerLeft,child: _mostPopularPlacesText()),
                 ),
-                SizedBox(height: SizeConfig.heightMultiplier(0.1),),
+                SizedBox(height: 0.812.h),
                 _popularPlacesList(state.populars),
               ],
             );
@@ -42,7 +42,7 @@ class PopularPlaces extends StatelessWidget {
     return Text(
       'Most Popular Places',
       style: TextStyle(
-          fontSize: SizeConfig.textMultiplier(4),
+          fontSize: 14.sp,
         fontFamily: 'CircularStd',
         color: AppColors.subtitleHome
       ),
@@ -51,7 +51,7 @@ class PopularPlaces extends StatelessWidget {
 
   Widget _popularPlacesList(List<PopularEntity> categories) {
     return SizedBox(
-      height: SizeConfig.heightMultiplier(25),
+      height: 203.h,
       child: ListView.separated(
           scrollDirection: Axis.horizontal,
           padding: const EdgeInsets.symmetric(
@@ -61,8 +61,8 @@ class PopularPlaces extends StatelessWidget {
             return Column(
               children: [
                 Container(
-                  height: SizeConfig.heightMultiplier(11),
-                  width: SizeConfig.heightMultiplier(20),
+                  height: 90.h,
+                  width: 150.w,
                   decoration:BoxDecoration(
                     color: Colors.transparent,
                     image: DecorationImage(
@@ -74,18 +74,19 @@ class PopularPlaces extends StatelessWidget {
                     )
                   ),
                 ),
-                SizedBox(height: SizeConfig.heightMultiplier(1.5),),
+                SizedBox(height: 12.18.h),
                 Text(
                   categories[index].title,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: SizeConfig.textMultiplier(4)
+                    fontSize: 14.sp,
+                    color: AppColors.clickableNames
                   ),
                 )
               ],
             );
           },
-          separatorBuilder: (context, index) => SizedBox(width: SizeConfig.widthMultiplier(3)),
+          separatorBuilder: (context, index) => SizedBox(width: 11.25.w),
           itemCount: categories.length
       ),
     );

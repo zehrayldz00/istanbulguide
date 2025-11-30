@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:istanbulguidetwo/core/config/theme/app_colors.dart';
-import 'package:istanbulguidetwo/core/utils/size_config.dart';
 
 import '../../../common/helper/navigator/app_navigator.dart';
 import '../../search/pages/search_page.dart';
@@ -11,8 +11,8 @@ class SearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: SizeConfig.heightMultiplier(4),
-      width: SizeConfig.widthMultiplier(90),
+      height: 32.48.h,
+      width: 337.5.w,
       child: TextField(
         readOnly: true,
         onTap: (){
@@ -20,13 +20,13 @@ class SearchField extends StatelessWidget {
         },
         style: TextStyle(
           fontFamily: 'CircularStd',
-          fontSize: SizeConfig.textMultiplier(2),
+          fontSize: 14.sp,
         ),
         decoration: InputDecoration(
           prefixIcon: Icon(Icons.search),
           hintText: 'Search',
           hintStyle: TextStyle(
-            fontSize: SizeConfig.textMultiplier(2),
+            fontSize: 14.sp,
             color: AppColors.hintColor
           )
 

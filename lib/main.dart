@@ -8,6 +8,7 @@ import 'package:istanbulguidetwo/firebase_options.dart';
 import 'package:istanbulguidetwo/presentation/splash/bloc/splash_cubit.dart';
 import 'package:istanbulguidetwo/presentation/splash/pages/splash_page.dart';
 import 'package:istanbulguidetwo/service_locator.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,12 +34,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
-    return BlocProvider(
-      create: (context) => SplashCubit()..appStarted(),
-      child: MaterialApp(
-        theme: AppTheme.appTheme,
-        debugShowCheckedModeBanner: false,
-        home: SplashPage(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812), // Referans alınan tasarım boyutu (Figma vs.)
+      minTextAdapt: true, // Yazıların boyutunu otomatik ayarlar
+      splitScreenMode: true, // Bölünmüş ekran desteği
+      child: BlocProvider(
+        create: (context) => SplashCubit()..appStarted(),
+        child: MaterialApp(
+          theme: AppTheme.appTheme,
+          debugShowCheckedModeBanner: false,
+          home: SplashPage(),
+        ),
       ),
     );
   }

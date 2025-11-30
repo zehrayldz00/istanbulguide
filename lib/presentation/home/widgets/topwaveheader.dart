@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:istanbulguidetwo/core/config/theme/app_colors.dart';
 import 'package:istanbulguidetwo/domain/auth/entity/user.dart';
 import 'package:istanbulguidetwo/presentation/home/bloc/user_info_display_cubit.dart';
 import 'package:istanbulguidetwo/presentation/home/bloc/user_info_display_state.dart';
 import 'package:istanbulguidetwo/presentation/home/widgets/topwaveclipper.dart';
-
-import '../../../core/utils/size_config.dart';
 
 class TopWaveHeader extends StatelessWidget {
   const TopWaveHeader({super.key});
@@ -17,12 +16,9 @@ class TopWaveHeader extends StatelessWidget {
       create: (context) => UserInfoDisplayCubit()..displayUserInfo(),
       child: SizedBox(
         width: double.infinity,
-        height: SizeConfig.heightMultiplier(18),
+        height: 146.16.h,
         child: LayoutBuilder(
           builder: (context, constraints) {
-            final w = constraints.maxWidth;
-            final h = constraints.maxHeight;
-
             return Row(
               children: [
                 Stack(
@@ -32,7 +28,7 @@ class TopWaveHeader extends StatelessWidget {
                       color: const Color(0xFF7FA9BB),
                       elevation: 4,
                       shadowColor: Colors.black,
-                      child: SizedBox(width: w, height: h),
+                      child: SizedBox(width: 375.w, height: 812.h),
                     ),
 
                     BlocBuilder<UserInfoDisplayCubit, UserInfoDisplayState>(
@@ -42,8 +38,8 @@ class TopWaveHeader extends StatelessWidget {
                         }
                         if (state is UserInfoLoaded) {
                           return Positioned(
-                            left: w * 0.06,
-                            bottom: h * 0.52,
+                            left: 22.5.w,
+                            top: 40.h,
                             child: _title(state.user, context),
                           );
                         }
@@ -51,13 +47,22 @@ class TopWaveHeader extends StatelessWidget {
                       },
                     ),
                     Positioned(
-                      left: w * 0.06,
-                      bottom: h * 0.40,
+                      left: 22.5.w,
+                      top: 65.h,
                       child: _subTitle(),
                     ),
                     Positioned(
-                      right: w * 0.06,
-                      bottom: h * 0.20,
+                      right: 10.w,
+                      top: 32.h,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(shape: CircleBorder(),),
+                        child: Icon(Icons.menu),
+                      ),
+                    ),
+                    Positioned(
+                      right: 25.w,
+                      top: 75.h,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(shape: CircleBorder()),
@@ -80,7 +85,7 @@ class TopWaveHeader extends StatelessWidget {
       style: Theme.of(context).textTheme.headlineSmall?.copyWith(
         color: AppColors.textColor,
         fontWeight: FontWeight.bold,
-        fontSize: SizeConfig.textMultiplier(5),
+        fontSize: 16.sp,
       ),
     );
   }
@@ -91,7 +96,7 @@ class TopWaveHeader extends StatelessWidget {
       style: TextStyle(
         fontFamily: 'CircularStd',
         color: AppColors.textColor,
-        fontSize: SizeConfig.textMultiplier(3),
+        fontSize: 12.sp,
       ),
     );
   }

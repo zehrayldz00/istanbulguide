@@ -56,7 +56,7 @@ class TopWaveClipper extends CustomClipper<Path> {
     Offset(0.6967, 0.7597),
     Offset(0.7104, 0.7597),
     Offset(0.7240, 0.7597),
-      Offset(0.7377, 0.7519),
+    Offset(0.7377, 0.7519),
     Offset(0.7514, 0.7519),
     Offset(0.7650, 0.7442),
     Offset(0.7787, 0.7364),
