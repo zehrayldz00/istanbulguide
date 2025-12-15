@@ -28,8 +28,7 @@ class SearchField extends StatelessWidget {
           hintStyle: TextStyle(
             fontSize: 14.sp,
             color: AppColors.hintColor
-          )
-
+          ),
         ),
       ),
     );

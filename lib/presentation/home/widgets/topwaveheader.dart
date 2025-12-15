@@ -16,13 +16,14 @@ class TopWaveHeader extends StatelessWidget {
       create: (context) => UserInfoDisplayCubit()..displayUserInfo(),
       child: Stack(
         children: [
-          ClipPath(
+          PhysicalShape(
             clipper: WaveClipperOne(),
-            child: Container(height: 115.h, color: const Color(0xFF7FA9BB),
-            ),
+            color: AppColors.topWaveColor,
+            elevation: 10.0,
+            child: Container(height: 115.h,),
           ),
 
-          BlocBuilder<UserInfoDisplayCubit, UserInfoDisplayState>(
+          BlocBuilder<UserInfoDisplayCubit, UserInfoDisplayState>( 
             builder: (context, state) {
               if (state is UserInfoLoading) {
                 return Center(child: CircularProgressIndicator());
@@ -38,6 +39,7 @@ class TopWaveHeader extends StatelessWidget {
             },
           ),
           Positioned(left: 22.5.w, top: 65.h, child: _subTitle()),
+          Positioned(right: 14.w, top: 30.h,child: _menuButton())
         ],
       ),
     );
@@ -62,6 +64,19 @@ class TopWaveHeader extends StatelessWidget {
         color: AppColors.textColor,
         fontSize: 12.sp,
       ),
+    );
+  }
+
+  Widget _menuButton(){
+    return ElevatedButton(
+        onPressed: (){},
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.buttonBackGroundColor,
+          shape: CircleBorder(),
+          elevation: 0,
+          foregroundColor: AppColors.buttonTextColor,
+        ),
+        child: Icon(Icons.menu)
     );
   }
 }

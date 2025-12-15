@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:istanbulguidetwo/common/bloc/button/button_state_cubit.dart';
 import 'package:istanbulguidetwo/common/helper/navigator/app_navigator.dart';
 import 'package:istanbulguidetwo/common/widget/button/basic_reactive_button.dart';
@@ -54,8 +55,8 @@ class LoginPage extends StatelessWidget {
                 child: ClipPath(
                   clipper: WaveClipperTwo(reverse: true),
                   child: Container(
-                    height: SizeConfig.heightMultiplier(60),
-                    width: SizeConfig.screenWidth,
+                    height: 487.2.h,
+                    width: 375.w,
                     color: AppColors.secondBackGround,
                     child: Padding(
                       padding: EdgeInsets.only(

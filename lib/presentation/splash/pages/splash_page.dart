@@ -58,7 +58,7 @@ class _SplashPageState extends State<SplashPage>
         body: Center(
           child: SlideTransition(
             position: _animation,
-            child: Image.asset(AppImages.appLogo, height: 300, width: 300),
+            child: Image.asset(AppImages.appLogo),
           ),
         ),
       ),

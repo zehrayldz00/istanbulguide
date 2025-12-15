@@ -51,7 +51,7 @@ class PopularPlaces extends StatelessWidget {
 
   Widget _popularPlacesList(List<PopularEntity> categories) {
     return SizedBox(
-      height: 203.h,
+      height: 150.h,
       child: ListView.separated(
           scrollDirection: Axis.horizontal,
           padding: const EdgeInsets.symmetric(
