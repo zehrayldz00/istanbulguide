@@ -1,3 +1,4 @@
+import 'package:istanbulguidetwo/presentation/features/guide/pages/guide_page.dart';
 import 'package:istanbulguidetwo/presentation/home/pages/home_page.dart';
 
 import '../models/feature_item.dart';
@@ -6,7 +7,7 @@ final List<FeatureItem> featureItems = [
   FeatureItem(
     title: "Guide",
     imagePath: "assets/images/features/2.png",
-    destinationPage: HomePage(),
+    destinationPage: GuidePage(),
   ),
   FeatureItem(
     title: "My Roadmap",
