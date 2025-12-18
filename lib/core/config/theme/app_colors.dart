@@ -9,6 +9,7 @@ class AppColors{
   static const buttonTextColor = Colors.white;
 
   static const textFieldBackGroundColor = Color(0x80FFFFFF);
+  static const aiTextBackGroundColor = Color(0x24FFFFFF);
   static const hintColor = Color(0x80878787);
   static const subtitleHome = Color(0xFF878787);
   static const clickableNames = Color(0xFF515151);
