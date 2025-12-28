@@ -27,7 +27,7 @@ class GuideView extends StatefulWidget {
 }
 
 class _GuideViewState extends State<GuideView> {
-  final ChatUser _currentUser = ChatUser(id: '1', firstName: 'Ben');
+  final ChatUser _currentUser = ChatUser(id: '1', firstName: 'Me');
   final ChatUser _aiUser = ChatUser(
     id: '2',
     firstName: 'Istanbul Guide',
@@ -37,11 +37,6 @@ class _GuideViewState extends State<GuideView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Istanbul Guide"),
-        backgroundColor: Colors.teal,
-        foregroundColor: Colors.white,
-      ),
       body: BlocBuilder<GuideCubit, GuideState>(
         builder: (context, state) {
           if (state is GuideError) {
@@ -69,31 +64,56 @@ class _GuideViewState extends State<GuideView> {
                 sendOnEnter: true,
               ),
               messageOptions: MessageOptions(
-                avatarBuilder: (ChatUser user, Function? onPress, Function? onLongPress) {
-                  if (user.id == _aiUser.id) {
-                    return Padding(
-                      padding: EdgeInsets.only(right: 5.w, left: 8.w,),
-                      child: Container(
-                        width: 45.w,
-                        height: 60.h,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(user.profileImage ?? ''),
-                            fit: BoxFit.cover,
+                avatarBuilder:
+                    (ChatUser user, Function? onPress, Function? onLongPress) {
+                      if (user.id == _aiUser.id) {
+                        return Padding(
+                          padding: EdgeInsets.only(right: 5.w, left: 8.w),
+                          child: Container(
+                            width: 45.w,
+                            height: 60.h,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(user.profileImage ?? ''),
+                                fit: BoxFit.cover,
+                              ),
+                              color: Colors.transparent,
+                            ),
                           ),
-                          color: Colors.transparent,
-
-                        ),
-                      ),
-                    );
-                  }
-                  return const SizedBox.shrink();
-                },
-                currentUserContainerColor: AppColors.x,
-                containerColor: AppColors.primary,
-                textColor: AppColors.textColor,
-                currentUserTextColor: Colors.white,
+                        );
+                      }
+                      return const SizedBox.shrink();
+                    },
                 showTime: true,
+                messagePadding: EdgeInsets.all(20.w),
+                messageDecorationBuilder:
+                    (message, previousMessage, nextMessage) {
+                      bool isMe = message.user.id == _currentUser.id;
+                      return BoxDecoration(
+                        color: isMe
+                            ? AppColors.background2
+                            : AppColors.primary1,
+                        borderRadius: BorderRadius.circular(30),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            spreadRadius: 2,
+                            blurRadius: 4,
+                          ),
+                        ],
+                      );
+                    },
+
+                  messageTextBuilder: (ChatMessage message, ChatMessage? previousMessage, ChatMessage? nextMessage) {
+                    bool isMe = message.user.id == _currentUser.id;
+                    return Text(
+                        message.text,
+                        style: TextStyle(
+                            color: isMe ? Colors.black : Colors.white,
+                            fontSize: 16.sp
+                        ));
+
+                  }
               ),
             );
           }
