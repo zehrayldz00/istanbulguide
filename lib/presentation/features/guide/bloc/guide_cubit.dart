@@ -9,11 +9,9 @@ class GuideCubit extends Cubit<GuideState> {
 
   final List<MessageEntity> _messages = [];
 
-  GuideCubit({required this.sendMessageUseCase}) : super(GuideInitial()) {
-    _initChat();
-  }
+  GuideCubit({required this.sendMessageUseCase}) : super(GuideInitial());
 
-  void _initChat() {
+  void initChat({String? initialPrompt}) {
     final welcomeMsg = MessageEntity(
       text:
           "Hi! I'm your Istanbul guide. You can ask me anything about historical sites, food, or transportation. ",
@@ -23,6 +21,10 @@ class GuideCubit extends Cubit<GuideState> {
 
     _messages.add(welcomeMsg);
     emit(GuideLoaded(messages: List.from(_messages)));
+
+    if(initialPrompt != null && initialPrompt.isNotEmpty){
+      sendMessage(initialPrompt);
+    }
   }
 
   Future<void> sendMessage(String text) async {

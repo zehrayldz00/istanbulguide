@@ -9,14 +9,16 @@ class Features extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(child: _featureList(featureItems));
+    return _featureList(featureItems);
   }
 
   Widget _featureList(List<FeatureItem> featureItems) {
+    const Color white = Colors.white;
+
     return ListView.separated(
-      shrinkWrap: false,
-      physics: const BouncingScrollPhysics(),
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 5.h),
       scrollDirection: Axis.vertical,
       itemBuilder: (context, index) {
         return GestureDetector(
@@ -24,47 +26,59 @@ class Features extends StatelessWidget {
             AppNavigator.push(context, featureItems[index].destinationPage);
           },
           child: Container(
-            height: 170.h,
+            height: 140.h,
             width: 360.w,
             decoration: BoxDecoration(
+              // Mavinin içeri sızmasını engelleyen siyah tabanımız
+              color: Colors.black,
               borderRadius: BorderRadius.circular(30.r),
+
+              // İnce, net neon mavi çizgi
+              border: Border.all(
+                color: white,
+                width: 2.2,
+              ),
+
+
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withAlpha(90),
-                  blurRadius: 7,
-                  spreadRadius: 1,
-                  offset: const Offset(0, 8),
+                  color: white.withAlpha(180),
+                  blurRadius: 10,
+                  spreadRadius: 2,
                 ),
               ],
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(50.r),
+              borderRadius: BorderRadius.circular(28.r),
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  Container(
-                    height: 200.h,
-                    width: 300.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.r),
-                      image: DecorationImage(
-                        alignment: Alignment.center,
-                        fit: BoxFit.cover,
-                        image: AssetImage(featureItems[index].imagePath),
-                      ),
-                    ),
+                  // Resim orijinal (İçi tertemiz)
+                  Image.asset(
+                    featureItems[index].imagePath,
+                    fit: BoxFit.cover,
                   ),
-                  Container(
-                    color: Colors.black.withAlpha(60),
-                  ),
+
+                  // Başlık ve Okunabilirlik Gölgeleri
                   Center(
                     child: Text(
                       featureItems[index].title,
                       style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24.sp,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.2,
+                          color: Colors.white,
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1.2,
+                          shadows: [
+                            Shadow(
+                              color: Colors.black.withAlpha(220),
+                              blurRadius: 10,
+                              offset: const Offset(2, 2),
+                            ),
+                            Shadow(
+                              color: Colors.black,
+                              blurRadius: 20,
+                            ),
+                          ]
                       ),
                     ),
                   ),
@@ -74,7 +88,7 @@ class Features extends StatelessWidget {
           ),
         );
       },
-      separatorBuilder: (context, index) => SizedBox(height: 10.h),
+      separatorBuilder: (context, index) => SizedBox(height: 25.h),
       itemCount: featureItems.length,
     );
   }

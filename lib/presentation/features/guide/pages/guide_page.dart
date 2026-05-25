@@ -8,12 +8,14 @@ import '../bloc/guide_cubit.dart';
 import '../bloc/guide_state.dart';
 
 class GuidePage extends StatelessWidget {
-  const GuidePage({super.key});
+  final String? autoMessage;
+
+  const GuidePage({super.key, this.autoMessage});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<GuideCubit>(),
+      create: (context) => sl<GuideCubit>()..initChat(initialPrompt: autoMessage),
       child: const GuideView(),
     );
   }
@@ -92,7 +94,7 @@ class _GuideViewState extends State<GuideView> {
                       return BoxDecoration(
                         color: isMe
                             ? AppColors.background2
-                            : AppColors.primary1,
+                            : AppColors.topWaveColor,
                         borderRadius: BorderRadius.circular(30),
                         boxShadow: [
                           BoxShadow(

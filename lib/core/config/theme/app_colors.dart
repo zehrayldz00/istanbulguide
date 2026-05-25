@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 
 class AppColors{
   static const primary = Color(0xff04919b);
-  static const background = Color(0xffe7d3b7);
-  static const secondBackGround = Color(0xB8103d66);
-  static const topWaveColor = Color(0xB8103d66);
+  static const background = Colors.black;
+  static const secondBackGround = Color(0x3D808080);
+  static const topWaveColor = Color(0x3D808080);
+  static const topWaveColor2 = Color(0xB8103d66);
   static const x = Color(0xffbb3d11);
   static const buttonTextColor = Colors.white;
+
+
+  static const background3 = Color(0xffe7d3b7);
 
   static const textFieldBackGroundColor = Color(0x80FFFFFF);
   static const aiTextBackGroundColor = Color(0x24FFFFFF);
@@ -27,4 +31,11 @@ class AppColors{
   static const secondBackGround1 = Color(0xB8326573);
   static const buttonTextColor1 = Color(0xff326573);
 
+
+  static const primary2 = Color(0xff04919b);
+  static const background4 = Colors.black;
+  static const secondBackGround2 = Color(0xB8103d66);
+  static const topWaveColor3 = Color(0xB8103d66);
+  static const x2 = Color(0xffbb3d11);
+  static const buttonTextColor2 = Colors.white;
 }

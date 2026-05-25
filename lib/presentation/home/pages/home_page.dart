@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:istanbulguidetwo/presentation/home/widgets/features.dart';
-import 'package:istanbulguidetwo/presentation/home/widgets/search_field.dart';
 import 'package:istanbulguidetwo/presentation/home/widgets/topwaveheader.dart';
 
 import '../widgets/popular_places.dart';
+import '../widgets/side_menu.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -13,14 +13,24 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: const SideMenu(),
       body: Column(
           children: [
-            TopWaveHeader(),
-            SizedBox(height: 10.h),
-            SearchField(),
-            SizedBox(height: 15.h),
-            PopularPlaces(),
-            Features()
+            const TopWaveHeader(),
+
+            Expanded(
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 10.h),
+                      const PopularPlaces(),
+                      const Features(),
+                      SizedBox(height: 20.h),
+                    ],
+                  ),
+                )
+            )
           ]
       ),
     );

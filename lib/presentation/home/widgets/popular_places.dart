@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:istanbulguidetwo/common/helper/images/image_display.dart';
+import 'package:istanbulguidetwo/common/helper/navigator/app_navigator.dart';
 import 'package:istanbulguidetwo/domain/popular/entity/popular.dart';
+import 'package:istanbulguidetwo/presentation/features/guide/pages/guide_page.dart';
 
 import '../../../common/bloc/populars/populars_display_cubit.dart';
 import '../../../common/bloc/populars/populars_display_state.dart';
@@ -44,7 +46,7 @@ class PopularPlaces extends StatelessWidget {
 
   Widget _mostPopularPlacesText() {
     return Text(
-      'Most Popular Places',
+      'Most Important Places',
       style: TextStyle(
         fontSize: 14.sp,
         fontFamily: 'CircularStd',
@@ -60,34 +62,43 @@ class PopularPlaces extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 5),
         itemBuilder: (context, index) {
-          return Column(
-            children: [
-              Container(
-                height: 90.h,
-                width: 150.w,
-                decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  image: DecorationImage(
-                    alignment: Alignment.bottomCenter,
-                    fit: BoxFit.contain,
-                    image: CachedNetworkImageProvider(
-                      ImageDisplayHelper.generatePopularsImageURL(
-                        categories[index].image,
+          return GestureDetector(
+            onTap: (){
+              final placeName = categories[index].title;
+
+              final question = "Hi, can you give me information about $placeName?";
+
+              AppNavigator.push(context, GuidePage(autoMessage: question,));
+            },
+            child: Column(
+              children: [
+                Container(
+                  height: 90.h,
+                  width: 150.w,
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    image: DecorationImage(
+                      alignment: Alignment.bottomCenter,
+                      fit: BoxFit.contain,
+                      image: CachedNetworkImageProvider(
+                        ImageDisplayHelper.generatePopularsImageURL(
+                          categories[index].image,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(height: 12.18.h),
-              Text(
-                categories[index].title,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14.sp,
-                  color: AppColors.clickableNames,
+                SizedBox(height: 12.18.h),
+                Text(
+                  categories[index].title,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14.sp,
+                    color: AppColors.clickableNames,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         },
         separatorBuilder: (context, index) => SizedBox(width: 11.25.w),

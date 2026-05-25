@@ -39,7 +39,7 @@ class TopWaveHeader extends StatelessWidget {
             },
           ),
           Positioned(left: 22.5.w, top: 65.h, child: _subTitle()),
-          Positioned(right: 14.w, top: 30.h,child: _menuButton())
+          Positioned(right: 14.w, top: 30.h,child: _menuButton(context))
         ],
       ),
     );
@@ -67,16 +67,25 @@ class TopWaveHeader extends StatelessWidget {
     );
   }
 
-  Widget _menuButton(){
-    return ElevatedButton(
-        onPressed: (){},
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.buttonBackGroundColor,
-          shape: CircleBorder(),
-          elevation: 0,
-          foregroundColor: AppColors.buttonTextColor,
+  Widget _menuButton(BuildContext context){
+    return GestureDetector(
+      onTap: (){
+        Scaffold.of(context).openEndDrawer();
+      },
+
+      child: Container(
+        height: 40.w,
+        width: 40.w,
+        decoration: const BoxDecoration(
+          color: AppColors.buttonBackGroundColor,
+          shape: BoxShape.circle,
         ),
-        child: Icon(Icons.menu)
+
+        child: const Icon(
+          Icons.menu,
+          color: AppColors.buttonTextColor
+        ),
+      ),
     );
   }
 }
